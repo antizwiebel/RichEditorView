@@ -507,3 +507,19 @@ RE.getRelativeCaretYPosition = function() {
 window.onload = function() {
     RE.callback("ready");
 };
+
+RE.getHighlightsInSpans = function() {
+    var Highlight = class {
+        constructor(text, color) {
+          this.text = text;
+          this.color = color;
+        }
+      }
+      const collection = document.getElementsByTagName("span");
+      let highlights = [];
+
+      for (let i = 0; i < collection.length; i++) {
+        highlights.push(new Highlight(collection[i].textContent, collection[i].style.backgroundColor));
+      }
+      console.log(highlights);
+};

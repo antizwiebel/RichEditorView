@@ -415,6 +415,19 @@ public class RichEditorWebView: WKWebView {
         runJS("RE.addRowToTable()")
     }
 
+    public func getHighlights(handler: ((Any) -> Void)?) {
+        webView.evaluateJavaScript("RE.getHighlightsInSpans()") {(result, error) in
+            if let error = error {
+                print("WKWebViewJavascriptBridge Error: \(String(describing: error))")
+                handler?("")
+                return
+            }
+
+            guard let handler = handler, let result = result else { return }
+            handler(result)
+        }
+    }
+    
     /// Runs some JavaScript on the WKWebView and returns the result
     /// If there is no result, returns an empty string
     /// - parameter js: The JavaScript string to be run
