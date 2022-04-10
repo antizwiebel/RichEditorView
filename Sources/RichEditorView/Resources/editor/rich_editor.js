@@ -521,5 +521,5 @@ RE.getHighlightsInSpans = function() {
       for (let i = 0; i < collection.length; i++) {
         highlights.push(new Highlight(collection[i].textContent, collection[i].style.backgroundColor));
       }
-      console.log(highlights);
+      return highlights;
 };
